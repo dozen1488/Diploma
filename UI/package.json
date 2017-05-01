@@ -1,0 +1,43 @@
+{
+  "name": "easyweb",
+  "version": "0.0.0",
+  "description": "generator web pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "init",
+    "start": "node server.js",
+    "build": "NODE_ENV=producion webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dozen1488/Diploma.git"
+  },
+  "keywords": [
+    "html",
+    "generator"
+  ],
+  "author": "dozen1488",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dozen1488/Diploma/issues"
+  },
+  "homepage": "https://github.com/dozen1488/Diploma#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-runtime": "^6.23.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-hot-middleware": "^2.18.0"
+  }
+}
