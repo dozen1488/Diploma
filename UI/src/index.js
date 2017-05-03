@@ -1,7 +1,9 @@
 import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import Header from './headerComponent/header'
+
+import Index from './components/index'
+
 import s1 from './styles/themify-icons.css'
 import s2 from './styles/bootstrap.css'
 import s3 from './styles/owl.carousel.min.css'
@@ -13,6 +15,6 @@ import s8 from './styles/animate.css'
 import s9 from './styles/style.css'
 
 render(
-  <Header />,
+  <Index />,
   document.getElementById('root')
 )

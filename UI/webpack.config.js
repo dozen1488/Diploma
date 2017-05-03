@@ -3,14 +3,13 @@ const webpack = require('webpack')
 
 module.exports = {
     devtool: 'cheap-module-source-map',
-    entry: [
-        'webpack-hot-middleware/client',
-        'babel-polyfill',
-        './src/main'
-    ],
+    entry: {
+        index: './src/index',
+        login: './src/login'
+    },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
