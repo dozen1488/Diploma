@@ -13,7 +13,7 @@ export default class Header extends Component {
                     <nav id="fh5co-menu-wrap" role="navigation">
                         <ul className="sf-menu" id="fh5co-primary-menu">
                             <li className="active">
-                                <a href="index.html">Home</a>
+                                <a href="index.html">EasyWeb</a>
                             </li>
                             <li>
                                 <a href="#" className="fh5co-sub-ddown">Dropdown</a>
@@ -34,7 +34,7 @@ export default class Header extends Component {
                                     <li><a href="#">CSS3</a></li> 
                                 </ul>
                             </li>
-                            <li><a href="elements.html">Elements</a></li>
+                            <li><a href="login.html">Войти</a></li>
                             <li className="fh5co-special"><a href="contact.html">Get started</a></li>
                         </ul>
                     </nav>

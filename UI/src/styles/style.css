@@ -1773,3 +1773,8 @@ a > img.fh5co-align-center {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.CodeMirror {
+    height: 100vh !important
+}

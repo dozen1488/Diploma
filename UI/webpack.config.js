@@ -6,7 +6,9 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     entry: {
         index: './src/index',
-        login: './src/login'
+        login: './src/login',
+        cabinet: './src/cabinet.js',
+        templateEditor: './src/templateEditor.js'
     },
     output: {
         path: path.join(__dirname, '../Diploma/wwwroot/dist'),
