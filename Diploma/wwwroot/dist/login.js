@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3bf3fa9caae5545394df"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "03872075c7823349d100"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33879,7 +33879,7 @@ var Login = function (_Component) {
                         ),
                         _react2.default.createElement(
                             "form",
-                            null,
+                            { action: "Account/Login", method: "POST" },
                             _react2.default.createElement(
                                 "div",
                                 { className: "form-group row" },
@@ -33891,7 +33891,7 @@ var Login = function (_Component) {
                                 _react2.default.createElement(
                                     "div",
                                     { className: "col-sm-10" },
-                                    _react2.default.createElement("input", { type: "email", className: "form-control", id: "inputEmail3", placeholder: "Email" })
+                                    _react2.default.createElement("input", { name: "Email", type: "email", className: "form-control", id: "inputEmail3", placeholder: "Email" })
                                 )
                             ),
                             _react2.default.createElement(
@@ -33905,7 +33905,7 @@ var Login = function (_Component) {
                                 _react2.default.createElement(
                                     "div",
                                     { className: "col-sm-10" },
-                                    _react2.default.createElement("input", { type: "password", className: "form-control", id: "inputPassword3", placeholder: "Password" })
+                                    _react2.default.createElement("input", { name: "Password", type: "password", className: "form-control", id: "inputPassword3", placeholder: "Password" })
                                 )
                             ),
                             _react2.default.createElement(
@@ -33929,7 +33929,7 @@ var Login = function (_Component) {
                         ),
                         _react2.default.createElement(
                             "form",
-                            null,
+                            { action: "Account/Register", method: "POST" },
                             _react2.default.createElement(
                                 "div",
                                 { className: "form-group row" },
@@ -33941,7 +33941,7 @@ var Login = function (_Component) {
                                 _react2.default.createElement(
                                     "div",
                                     { className: "col-sm-10" },
-                                    _react2.default.createElement("input", { type: "email", className: "form-control", id: "inputEmail3", placeholder: "Email" })
+                                    _react2.default.createElement("input", { name: "Email", type: "email", className: "form-control", id: "inputEmail3", placeholder: "Email" })
                                 )
                             ),
                             _react2.default.createElement(
@@ -33955,7 +33955,7 @@ var Login = function (_Component) {
                                 _react2.default.createElement(
                                     "div",
                                     { className: "col-sm-10" },
-                                    _react2.default.createElement("input", { type: "password", className: "form-control", id: "inputPassword3", placeholder: "Password" })
+                                    _react2.default.createElement("input", { name: "Password", type: "password", className: "form-control", id: "inputPassword3", placeholder: "Password" })
                                 )
                             ),
                             _react2.default.createElement(

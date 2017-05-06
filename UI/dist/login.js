@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3bf3fa9caae5545394df"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d8fd7738a9a5c043a4de"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33879,7 +33879,7 @@ var Login = function (_Component) {
                         ),
                         _react2.default.createElement(
                             "form",
-                            null,
+                            { action: "Account/Login", method: "POST" },
                             _react2.default.createElement(
                                 "div",
                                 { className: "form-group row" },

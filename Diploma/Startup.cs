@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Routing;
 
 using Diploma.Models;
 
@@ -39,10 +40,13 @@ namespace Diploma
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseStaticFiles();
+            var routeBuilder = new RouteBuilder(app);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationScheme = "Cookies",
-                LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login"),
+                LoginPath = new Microsoft.AspNetCore.Http.PathString("/login.html"),
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });
@@ -53,8 +57,6 @@ namespace Diploma
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.UseStaticFiles();
-
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

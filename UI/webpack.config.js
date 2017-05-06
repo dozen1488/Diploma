@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'cheap-module-source-map',
@@ -8,12 +9,21 @@ module.exports = {
         login: './src/login'
     },
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '../Diploma/wwwroot/dist'),
         filename: '[name].js'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new CopyWebpackPlugin([
+            {
+                from: 'src/images/logo.png',
+                to: 'images/logo.png' 
+            }], 
+            { 
+                copyUnmodified: false
+            }
+        )
     ],
     module: {
         loaders: [

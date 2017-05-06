@@ -6,17 +6,17 @@ export default class Login extends Component {
             <div className="container">   
                 <div className="container">
                     <h1 class="jumbotron-heading">Вход</h1>
-                    <form>
+                    <form action="Account/Login" method="POST">
                         <div className="form-group row">
                             <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
                             <div className="col-sm-10">
-                                <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
+                                <input name="Email" type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label for="inputPassword3" className="col-sm-2 col-form-label">Password</label>
                             <div className="col-sm-10">
-                                <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+                                <input name="Password" type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
                             </div>
                         </div>
                         <div className="form-group row">
@@ -26,17 +26,17 @@ export default class Login extends Component {
                         </div>
                     </form>
                     <h1 class="jumbotron-heading">... или регистрация</h1>
-                    <form>
+                    <form action="Account/Register" method="POST">
                         <div className="form-group row">
                             <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
                             <div className="col-sm-10">
-                                <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
+                                <input name="Email" type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label for="inputPassword3" className="col-sm-2 col-form-label">Password</label>
                             <div className="col-sm-10">
-                                <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+                                <input name="Password" type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
                             </div>
                         </div>
                         <div className="form-group row">
