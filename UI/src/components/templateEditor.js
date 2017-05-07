@@ -5,6 +5,8 @@ export default class TemplateEditor extends Component {
     constructor(props) {
         super(props);
         this.state = this.getInitialState();
+        fetch('../api/templates')
+        .then(response => console.log(response));
     }
 
     getInitialState() {
@@ -24,7 +26,10 @@ export default class TemplateEditor extends Component {
             lineNumbers: true,
             mode: "htmlmixed"
         };
-        return <CodeMirror value={this.state.code} onChange={this.updateCode} 
+        var style = {
+            height: '100vh'
+        }
+        return <CodeMirror style={style} value={this.state.code} onChange={this.updateCode.bind(this)} 
             options={options}/>
     	}
 }

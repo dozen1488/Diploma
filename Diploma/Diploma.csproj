@@ -4,11 +4,6 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="wwwroot\cabinet.html" />
-    <Content Include="wwwroot\templateEditor.html" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -27,6 +22,11 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\usersFiles\" />
+    <Folder Include="wwwroot\publicFiles\App\dist\" />
+    <Folder Include="wwwroot\publicFiles\UserContent\" />
   </ItemGroup>
 
 </Project>

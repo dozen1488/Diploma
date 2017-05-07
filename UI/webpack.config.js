@@ -11,7 +11,7 @@ module.exports = {
         templateEditor: './src/templateEditor.js'
     },
     output: {
-        path: path.join(__dirname, '../Diploma/wwwroot/dist'),
+        path: path.join(__dirname, '../Diploma/wwwroot/publicFiles/App/dist'),
         filename: '[name].js'
     },
     plugins: [

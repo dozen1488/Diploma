@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 using Diploma.Models; 
 
 namespace Diploma.Controllers
@@ -21,7 +23,7 @@ namespace Diploma.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return LocalRedirect("login.html");
+            return LocalRedirect("/App/login.html");
         }
 
         [HttpPost]
@@ -38,13 +40,13 @@ namespace Diploma.Controllers
                 }
                 return BadRequest();
             }
-            return LocalRedirect("login.html");
+            return RedirectToAction("Login", "Account");
         }
         
         [HttpGet]
         public IActionResult Register()
         {
-            return LocalRedirect("login.html");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -56,8 +58,11 @@ namespace Diploma.Controllers
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
+                    var newUser = new User { Email = model.Email, Password = model.Password };
+                    db.Users.Add(newUser);
+
                     await db.SaveChangesAsync();
+                    newUser.createUserFolder();
 
                     await Authenticate(model.Email); // аутентификация
 
@@ -66,7 +71,14 @@ namespace Diploma.Controllers
                 else
                     return BadRequest();
             }
-            return View(model);
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetRightsAccess()
+        {
+            return Content("{user:\"" + User.Identity.Name + "\"}");
         }
 
         private async Task Authenticate(string userName)

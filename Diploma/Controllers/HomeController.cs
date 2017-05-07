@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Diploma.Controllers
 {
@@ -10,7 +11,7 @@ namespace Diploma.Controllers
     {
         public IActionResult Index()
         {
-            return LocalRedirect("/index.html");
+            return LocalRedirect("/App/index.html");
         }
     }
 }

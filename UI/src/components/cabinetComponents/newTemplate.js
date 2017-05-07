@@ -18,7 +18,14 @@ export default class NewTemplateForm extends Component {
     }
 
     createNewTemplate() {
-        console.log(this.state.templateName);
+        fetch('/api/templates/' + this.state.templateName,
+            {
+                method: 'POST',
+                credentials: "same-origin"
+            }
+        ).then( result => {
+            console.log(result.json());
+        })
     }
 
     render() {

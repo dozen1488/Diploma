@@ -46,7 +46,7 @@ namespace Diploma
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationScheme = "Cookies",
-                LoginPath = new Microsoft.AspNetCore.Http.PathString("/login.html"),
+                LoginPath = new Microsoft.AspNetCore.Http.PathString("/App/login.html"),
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });
