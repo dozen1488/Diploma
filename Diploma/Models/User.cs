@@ -50,6 +50,27 @@ namespace Diploma.Models
                 return templateName;
             }
         }
+
+        public string deleteTemplate(string templateName)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
+            if (!File.Exists(filepath)) return "";
+            else
+            {
+                File.Delete(filepath);
+                return "Deleted";
+            }
+        }
+
+        public FileStream getTemplate(string templateName)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
+            if (File.Exists(filepath))
+            {
+                return File.Open(filepath, FileMode.Open);
+            }
+            else throw new Exception("no such file");
+        }
     }
 
     public class LoginModel

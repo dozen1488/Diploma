@@ -26,10 +26,20 @@ namespace Diploma.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{templateName}")]
+        [Authorize]
+        public IActionResult Get(string templateName)
         {
-            return "value";
+            if (templateName == "") return BadRequest();
+            try
+            {
+                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                var stream = user.getTemplate(templateName);
+                return File(stream, "application/octet-stream"); // FileStreamResult
+            } catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
         // POST api/values
