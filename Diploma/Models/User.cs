@@ -39,6 +39,7 @@ namespace Diploma.Models
                 return false;
             }
         }
+
         public string createTemplate(string templateName)
         {
             var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
@@ -50,7 +51,6 @@ namespace Diploma.Models
                 return templateName;
             }
         }
-
         public string deleteTemplate(string templateName)
         {
             var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
@@ -61,7 +61,6 @@ namespace Diploma.Models
                 return "Deleted";
             }
         }
-
         public FileStream getTemplate(string templateName)
         {
             var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
@@ -70,6 +69,23 @@ namespace Diploma.Models
                 return File.Open(filepath, FileMode.Open);
             }
             else throw new Exception("no such file");
+        }
+        public string writeTemplate(string templateName, string templateText)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
+            if (!File.Exists(filepath)) return "";
+            else
+            {
+                File.WriteAllText(filepath, templateText);
+                return templateName;
+            }
+        }
+        public string[] getTemplates()
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates";
+            return Directory.GetFiles(filepath, "*.html")
+                .Select(Path.GetFileNameWithoutExtension)
+                .ToArray();
         }
     }
 

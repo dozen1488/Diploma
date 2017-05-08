@@ -5,8 +5,19 @@ export default class TemplateEditor extends Component {
     constructor(props) {
         super(props);
         this.state = this.getInitialState();
-        fetch('../api/templates')
-        .then(response => console.log(response));
+        fetch('/api/templates/' + localStorage.getItem("templateName"),
+            {
+                method: 'POST',
+                credentials: "same-origin",
+                headers: {
+					'Content-Type': 'application/json'
+				}
+            })
+            .then(result => result.body.getReader().read())
+            .then(res => new TextDecoder().decode(res.value))
+            .then(templateText => {
+                this.updateCode(templateText);
+            });
     }
 
     getInitialState() {

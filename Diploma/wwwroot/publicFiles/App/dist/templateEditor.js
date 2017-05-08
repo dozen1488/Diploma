@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "563536ddd339cf979635"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bd394581922acac3ad45"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33329,8 +33329,18 @@ var TemplateEditor = function (_Component) {
         var _this = (0, _possibleConstructorReturn3.default)(this, (TemplateEditor.__proto__ || (0, _getPrototypeOf2.default)(TemplateEditor)).call(this, props));
 
         _this.state = _this.getInitialState();
-        fetch('../api/templates').then(function (response) {
-            return console.log(response);
+        fetch('/api/templates/' + localStorage.getItem("templateName"), {
+            method: 'POST',
+            credentials: "same-origin",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (result) {
+            return result.body.getReader().read();
+        }).then(function (res) {
+            return new TextDecoder().decode(res.value);
+        }).then(function (templateText) {
+            _this.updateCode(templateText);
         });
         return _this;
     }

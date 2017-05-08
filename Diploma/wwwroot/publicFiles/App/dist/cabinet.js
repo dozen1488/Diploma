@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "563536ddd339cf979635"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bd394581922acac3ad45"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -34062,9 +34062,17 @@ var NewTemplateForm = function (_Component) {
         value: function createNewTemplate() {
             fetch('/api/templates/' + this.state.templateName, {
                 method: 'POST',
-                credentials: "same-origin"
+                credentials: "same-origin",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }).then(function (result) {
-                console.log(result.json());
+                return result.body.getReader().read();
+            }).then(function (res) {
+                return new TextDecoder().decode(res.value);
+            }).then(function (templateName) {
+                localStorage.setItem("templateName", templateName);
+                window.location.replace('templateEditor.html');
             });
         }
     }, {
@@ -34086,7 +34094,7 @@ var NewTemplateForm = function (_Component) {
                     _react2.default.createElement(
                         'button',
                         { type: 'button', className: 'btn btn-default navbar-btn',
-                            onClick: this.createNewTemplate.bind(this, event) },
+                            onClick: this.createNewTemplate.bind(this) },
                         '\u0421\u043E\u0437\u0434\u0430\u0442\u044C'
                     )
                 )

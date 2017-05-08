@@ -20,9 +20,11 @@ namespace Diploma.Controllers
         }
         // GET api/values
         [HttpGet]
+        [Authorize]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            return user.getTemplates();
         }
 
         // GET api/values/5
@@ -56,17 +58,35 @@ namespace Diploma.Controllers
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
+        [HttpPut("{templateName}")]
         [Authorize]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(string templateName, [FromBody]string templateText)
         {
-
+            if (templateName == "") return Ok();
+            else
+            {
+                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                if (user.writeTemplate(templateName, templateText) != "")
+                    return Ok();
+                else
+                    return BadRequest();
+            }
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{templateName}")]
+        [Authorize]
+        public IActionResult Delete(string templateName)
         {
+            if (templateName == "") return Ok();
+            else
+            {
+                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                if (user.deleteTemplate(templateName) != "")
+                    return Ok();
+                else
+                    return BadRequest();
+            }
         }
     }
 }

@@ -21,11 +21,17 @@ export default class NewTemplateForm extends Component {
         fetch('/api/templates/' + this.state.templateName,
             {
                 method: 'POST',
-                credentials: "same-origin"
-            }
-        ).then( result => {
-            console.log(result.json());
-        })
+                credentials: "same-origin",
+                headers: {
+					'Content-Type': 'application/json'
+				}
+            })
+        .then(result => result.body.getReader().read())
+		.then(res => new TextDecoder().decode(res.value))
+        .then(templateName => {
+            localStorage.setItem("templateName", templateName);
+            window.location.replace('templateEditor.html');
+        });
     }
 
     render() {
@@ -36,7 +42,7 @@ export default class NewTemplateForm extends Component {
                     aria-describedby="basic-addon1" onChange={this.handleChange.bind(this)}/>
 
                     <button type="button" className="btn btn-default navbar-btn" 
-                    onClick={this.createNewTemplate.bind(this, event)}>Создать</button>
+                    onClick={this.createNewTemplate.bind(this)}>Создать</button>
                     
                 </div>
             </div>
