@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import CodeMirror from 'react-codemirror';
 
-export default class TemplateEditor extends Component {
+export default class ComponentEditor extends Component {
     constructor(props) {
         super(props);
         this.state = this.getInitialState();
-        fetch('/api/templates/' + localStorage.getItem("templateName"),
+        fetch('/api/components/' + localStorage.getItem("componentName"),
             {
                 method: 'GET',
                 credentials: "same-origin",
@@ -15,8 +15,8 @@ export default class TemplateEditor extends Component {
             })
             .then(result => result.body.getReader().read())
             .then(res => new TextDecoder().decode(res.value))
-            .then(templateText => {
-                this.updateCode(templateText);
+            .then(componentText => {
+                this.updateCode(componentText);
             });
     }
 
@@ -33,7 +33,7 @@ export default class TemplateEditor extends Component {
     }
 
     saveTemplate() {
-        fetch('/api/templates/' + localStorage.getItem("templateName"),
+        fetch('/api/templates/' + localStorage.getItem("componentName"),
             {
                 method: 'PUT',
                 credentials: "same-origin",
