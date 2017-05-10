@@ -8,7 +8,8 @@ module.exports = {
         index: './src/index',
         login: './src/login',
         cabinet: './src/cabinet.js',
-        templateEditor: './src/templateEditor.js'
+        templateEditor: './src/templateEditor.js',
+        componentEditor: './src/componentEditor.js'
     },
     output: {
         path: path.join(__dirname, '../Diploma/wwwroot/publicFiles/App/dist'),
