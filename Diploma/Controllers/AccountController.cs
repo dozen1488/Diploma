@@ -78,7 +78,7 @@ namespace Diploma.Controllers
         [Authorize]
         public async Task<IActionResult> GetRightsAccess()
         {
-            return Content("{user:\"" + User.Identity.Name + "\"}");
+            return Content("{\"user\":\"" + User.Identity.Name + "\"}");
         }
 
         private async Task Authenticate(string userName)

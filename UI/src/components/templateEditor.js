@@ -7,7 +7,7 @@ export default class TemplateEditor extends Component {
         this.state = this.getInitialState();
         fetch('/api/templates/' + localStorage.getItem("templateName"),
             {
-                method: 'POST',
+                method: 'GET',
                 credentials: "same-origin",
                 headers: {
 					'Content-Type': 'application/json'
@@ -40,7 +40,10 @@ export default class TemplateEditor extends Component {
         var style = {
             height: '100vh'
         }
-        return <CodeMirror style={style} value={this.state.code} onChange={this.updateCode.bind(this)} 
+        return <div> 
+            <CodeMirror style={style} value={this.state.code} onChange={this.updateCode.bind(this)} 
             options={options}/>
+            <button type="button" className="btn btn-primary">Сохранить</button>
+        </div>
     	}
 }
