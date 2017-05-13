@@ -14,11 +14,24 @@ export default class NewSiteForm extends Component {
     }
 
     handleChange(event) {
-        this.state.templateName = event.target.value;
+        this.state.siteName = event.target.value;
     }
 
-    createNewTemplate() {
-        console.log(this.state.siteName);
+    createNewSite() {
+        fetch('/api/sites/' + this.state.siteName,
+            {
+                method: 'POST',
+                credentials: "same-origin",
+                headers: {
+					'Content-Type': 'application/json'
+				}
+            })
+        .then(result => result.body.getReader().read())
+		.then(res => new TextDecoder().decode(res.value))
+        .then(siteName => {
+            localStorage.setItem("siteName", this.state.siteName);
+            window.location.replace('siteEditor.html');
+        });
     }
 
     render() {
@@ -29,7 +42,7 @@ export default class NewSiteForm extends Component {
                     aria-describedby="basic-addon1" onChange={this.handleChange.bind(this)}/>
 
                     <button type="button" className="btn btn-default navbar-btn" 
-                    onClick={this.createNewTemplate.bind(this, event)}>Создать</button>
+                    onClick={this.createNewSite.bind(this, event)}>Создать</button>
                     
                 </div>
             </div>

@@ -138,12 +138,49 @@ namespace Diploma.Models
 
         public string createSite(string siteName)
         {
+            var currentDir = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName;
+            Directory.CreateDirectory(currentDir);
+            Directory.CreateDirectory(currentDir + "/styles");
+            Directory.CreateDirectory(currentDir + "/images");
+            Directory.CreateDirectory(currentDir + "/js");
             return siteName;
         }
-
-        public string deleteSite(string siteName)
+        public string[] getSites()
         {
-            return siteName;
+            return Directory.GetDirectories(Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites")
+                .Select(Path.GetDirectoryName)
+                .ToArray();
+        }
+        public string[] getSitePages(string siteName)
+        {
+            var filepaths = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName;
+            return Directory.GetFiles(filepaths, "*.html")
+                .Select(Path.GetFileNameWithoutExtension)
+                .ToArray();
+        }
+        public bool deleteSite(string siteName)
+        {
+            try
+            {
+                Directory.Delete(Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public string addPage(string siteName, string pageName)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName + "/" + pageName + ".html";
+            if (File.Exists(filepath)) return "";
+            else
+            {
+                var fileStream = File.Create(filepath);
+                fileStream.Dispose();
+                return pageName;
+            }
         }
     }
 

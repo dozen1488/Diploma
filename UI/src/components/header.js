@@ -7,7 +7,7 @@ export default class Header extends Component {
         this.state = {
             user: ""
         };
-        fetch("Account/GetRightsAccess",
+        fetch("../Account/GetRightsAccess",
             {
                 method: 'GET',
                 credentials: "same-origin",
