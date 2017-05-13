@@ -27,9 +27,8 @@
     "babel-runtime": "^6.23.0",
     "react": "^15.5.4",
     "react-codemirror": "^0.3.0",
-    "react-dnd": "^2.4.0",
-    "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^15.5.4",
+    "sortablejs": "^1.5.1",
     "spectacle": "^2.0.0",
     "spectacle-code-slide": "^0.4.0"
   },
