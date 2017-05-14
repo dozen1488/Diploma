@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3f46932ad211405f57fe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "572a10022e156e071d64"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -43257,10 +43257,7 @@ var ComponentEditor = function (_Component) {
             fetch('/api/components/' + localStorage.getItem("componentName"), {
                 method: 'PUT',
                 credentials: "same-origin",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: '"' + this.state.code + '"'
+                body: this.state.code
             }).then(function (result) {
                 window.location.replace('cabinet.html');
             });

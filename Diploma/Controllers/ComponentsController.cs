@@ -61,17 +61,23 @@ namespace Diploma.Controllers
         // PUT api/values/5
         [HttpPut("{componentName}")]
         [Authorize]
-        public IActionResult Put(string componentName, [FromBody]string componentText)
+        public IActionResult Put(string componentName)
         {
             if (componentName == "") return Ok();
             else
             {
                 User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
-                if (user.writeComponent(componentName, componentText) != "")
+                try
+                {
+                    user.writeComponent(componentName, this.Request.Body);
                     return Ok();
-                else
+                }
+                catch (Exception ex)
+                {
                     return BadRequest();
+                }
             }
+            
         }
 
         // DELETE api/values/5

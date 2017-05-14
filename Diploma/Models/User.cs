@@ -121,13 +121,15 @@ namespace Diploma.Models
             }
             else throw new Exception("no such file");
         }
-        public string writeComponent(string componentName, string componentText)
+        public string writeComponent(string componentName, Stream componentText)
         {
             var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/components/" + componentName + ".html";
             if (!File.Exists(filepath)) return "";
             else
             {
-                File.WriteAllText(filepath, componentText);
+                var inputStream = new FileStream(filepath, FileMode.Open);
+                componentText.CopyTo(inputStream);
+                inputStream.Dispose();
                 return componentName;
             }
         }

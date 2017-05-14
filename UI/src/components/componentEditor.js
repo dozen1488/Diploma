@@ -37,10 +37,7 @@ export default class ComponentEditor extends Component {
             {
                 method: 'PUT',
                 credentials: "same-origin",
-                headers: {
-					'Content-Type': 'application/json'
-				},
-                body: '"' + this.state.code + '"'
+                body: this.state.code
             })
             .then(result => {
                 window.location.replace('cabinet.html')
