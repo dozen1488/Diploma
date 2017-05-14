@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Content Include="wwwroot\publicFiles\App\componentEditor.html" />
+    <Content Include="wwwroot\publicFiles\App\pageEditor.html" />
     <Content Include="wwwroot\publicFiles\App\siteEditor.html" />
   </ItemGroup>
   <ItemGroup>

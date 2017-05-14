@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 
 using Diploma.Models;
@@ -60,16 +60,21 @@ namespace Diploma.Controllers
         // PUT api/values/5
         [HttpPut("{templateName}")]
         [Authorize]
-        public IActionResult Put(string templateName, [FromBody]string templateText)
+        public IActionResult Put(string templateName)
         {
             if (templateName == "") return Ok();
             else
             {
                 User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
-                if (user.writeTemplate(templateName, templateText) != "")
+                try
+                {
+                    user.writeTemplate(templateName, this.Request.Body);
                     return Ok();
-                else
+                }
+                catch (Exception ex)
+                {
                     return BadRequest();
+                }
             }
         }
 

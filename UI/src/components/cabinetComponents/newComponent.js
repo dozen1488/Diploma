@@ -17,7 +17,7 @@ export default class NewComponentForm extends Component {
         this.state.componentName = event.target.value;
     }
 
-    createNewTemplate() {
+    createNewComponent() {
         fetch('/api/components/' + this.state.componentName,
             {
                 method: 'POST',
@@ -28,8 +28,8 @@ export default class NewComponentForm extends Component {
             })
         .then(result => result.body.getReader().read())
 		.then(res => new TextDecoder().decode(res.value))
-        .then(templateName => {
-            localStorage.setItem("componentName", templateName);
+        .then(componentName => {
+            localStorage.setItem("componentName", componentName);
             window.location.replace('componentEditor.html');
         });
     }
@@ -42,7 +42,7 @@ export default class NewComponentForm extends Component {
                     aria-describedby="basic-addon1" onChange={this.handleChange.bind(this)}/>
 
                     <button type="button" className="btn btn-default navbar-btn" 
-                    onClick={this.createNewTemplate.bind(this)}>Создать</button>
+                    onClick={this.createNewComponent.bind(this)}>Создать</button>
                     
                 </div>
             </div>

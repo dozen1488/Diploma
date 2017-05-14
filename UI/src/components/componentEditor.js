@@ -32,8 +32,8 @@ export default class ComponentEditor extends Component {
         });
     }
 
-    saveTemplate() {
-        fetch('/api/templates/' + localStorage.getItem("componentName"),
+    saveComponent() {
+        fetch('/api/components/' + localStorage.getItem("componentName"),
             {
                 method: 'PUT',
                 credentials: "same-origin",
@@ -58,7 +58,7 @@ export default class ComponentEditor extends Component {
         return <div> 
             <CodeMirror style={style} value={this.state.code} onChange={this.updateCode.bind(this)} 
             options={options}/>
-            <button type="button" className="btn btn-primary" onClick={this.saveTemplate.bind(this)}>Сохранить</button>
+            <button type="button" className="btn btn-primary" onClick={this.saveComponent.bind(this)}>Сохранить</button>
         </div>
     	}
 }

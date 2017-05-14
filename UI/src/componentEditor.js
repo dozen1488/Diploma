@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 
-import ComponentEditor from './components/templateEditor'
+import ComponentEditor from './components/componentEditor'
 
 import s1 from './styles/themify-icons.css'
 import s2 from './styles/bootstrap.css'

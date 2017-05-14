@@ -37,12 +37,9 @@ export default class TemplateEditor extends Component {
             {
                 method: 'PUT',
                 credentials: "same-origin",
-                headers: {
-					'Content-Type': 'application/json'
-				},
-                body: '"' + this.state.code + '"'
+                body: this.state.code
             })
-            .then(result => {
+            .then(() => {
                 window.location.replace('cabinet.html')
             });
     }
@@ -59,6 +56,10 @@ export default class TemplateEditor extends Component {
             <CodeMirror style={style} value={this.state.code} onChange={this.updateCode.bind(this)} 
             options={options}/>
             <button type="button" className="btn btn-primary" onClick={this.saveTemplate.bind(this)}>Сохранить</button>
+            <form action="/api/templates/fsdf" method="put" enctype="multipart/form-data">
+                <input type="file" name="uploadedFile" />
+                <input type="submit" value="Загрузить" />
+            </form>
         </div>
     	}
 }

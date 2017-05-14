@@ -1,12 +1,65 @@
 import React, { Component, PropTypes } from 'react'
 import Sortable from 'sortablejs';
 
-
+const bodyCode = `
+    (
+        function el(event){
+            console.dir(event.srcElement.parentElement.childNodes[1].value);
+            event.srcElement.parentElement.innerText = event.srcElement.parentElement.childNodes[1].value;
+        }
+    )
+    (event)
+`
 
 class PageEditor extends Component {
-
     constructor(props) {
         super(props);
+        this.state = this.getInitialState();
+        this.getBody();
+    }
+
+    getInitialState() {
+        return {
+            innerHTML: ''
+        }
+    }
+
+    getBody() {
+        if(localStorage.getItem("templateName") != '')
+            fetch('/api/templates/' + localStorage.getItem("templateName"),
+                {
+                    method: 'GET',
+                    credentials: "same-origin",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(result => result.body.getReader().read())
+                .then(res => new TextDecoder().decode(res.value))
+                .then(templateText => {
+                    this.setState((prevstate) => {
+                        prevstate.innerHTML = templateText;
+                    });
+                    this.componentDidMount();
+                });
+        else {
+            fetch('/api/sites/' + localStorage.getItem("siteName") + "/" + localStorage.getItem("pageName"),
+                {
+                    method: 'GET',
+                    credentials: "same-origin",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(result => result.body.getReader().read())
+                .then(res => new TextDecoder().decode(res.value))
+                .then(templateText => {
+                    this.setState((prevstate) => {
+                        prevstate.innerHTML = templateText;
+                    });
+                    this.componentDidMount();
+                });
+        }
     }
 
     onEndStrategy(event) {
@@ -19,37 +72,50 @@ class PageEditor extends Component {
         var sortable = Sortable.create(el,
         {
             group: {
-                name: "shared",
+                name: "components",
+                put: [],
                 pull: "clone",
                 revertClone: true
             },
+            sort: false,
             onEnd: (event) => {
                 console.log(event);
-                var node = document.createTextNode("This is new.");
-                event.item.innerHTML = '<input type="text" size="40">';
+                if(event.item.parentNode.id == "from") return;
+                event.item.innerHTML = `
+                    <input type="text" size="40">
+                    <button onclick="${bodyCode}">закончить редактирование</button>
+                    `;
             }
         });
-        var el1 = document.getElementById('to');
-        var sortable1 = Sortable.create(el1,
-        {
-            group: "shared"
+        var eWcontainers = Array.prototype.slice.call(document.getElementsByClassName('EWcontainer'));
+        eWcontainers = eWcontainers.forEach(container => {
+            return Sortable.create(container,
+            {
+                group: {
+                    name: "shared",
+                    put: [ "components" ],
+                    pull: true
+                }
+            });
         });
     }
 
+    saveInnerHTML() {
+        document.getElementById("EWinnerHTMLElement").innerHTML
+    }
+    
     render() {
+
         return <div>
-            <div style={{
-                width: '50vw',
+            <div id="EWinnerHTMLElement" style={{
+                width: '80vw',
                 float: 'left'
+            }} dangerouslySetInnerHTML={{
+                __html: this.state.innerHTML
             }}>
-                <div id="to">
-                    <div>item 1</div>
-                    <div>item 2</div>
-                    <div>item 3</div>
-                </div>
             </div>
             <div style={{
-                width: '50vw',
+                width: '20vw',
                 float: 'right'
             }}>
                 <div id="from">

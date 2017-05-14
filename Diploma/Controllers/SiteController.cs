@@ -27,7 +27,7 @@ namespace Diploma.Controllers
             User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             return user.getSites();
         }
-        
+
         [HttpPost]
         [Authorize]
         [HttpPost("{siteName}")]
@@ -37,6 +37,47 @@ namespace Diploma.Controllers
             try
             {
                 user.createSite(siteName);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{siteName}")]
+        [Authorize]
+        public IActionResult DELETE(string siteName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            try
+            {
+                user.deleteSite(siteName);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+
+        [HttpGet("{siteName}")]
+        [Authorize]
+        public IEnumerable<string> GetSitePages(string siteName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            return user.getSitePages(siteName);
+        }
+        
+        [Authorize]
+        [HttpGet("{siteName}/{pageName}")]
+        public IActionResult getPage(string siteName, string pageName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            try
+            {
+                user.getSitePage(siteName, pageName);
                 return Ok();
             }
             catch (Exception ex)
@@ -61,5 +102,37 @@ namespace Diploma.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPut("{siteName}")]
+        [Authorize]
+        public IActionResult putPage(string siteName, [FromBody]string pageText)
+        {
+            if (siteName == "") return BadRequest();
+            else
+            {
+                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                if (user.writeSitePage(siteName, pageText) != "")
+                    return Ok();
+                else
+                    return BadRequest();
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete("{siteName}/{pageName}")]
+        public IActionResult deletePage(string siteName, string pageName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            try
+            {
+                user.deleteSitePage(siteName, pageName);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }
