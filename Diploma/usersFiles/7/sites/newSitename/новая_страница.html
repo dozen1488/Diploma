@@ -1,0 +1,573 @@
+<!-- site header -->
+<style>
+/* GENERAL */
+body {
+	background:#EFEFEF;
+}
+.wrapper {
+	width:950px;
+	margin:0 auto;
+	position:relative;
+	display:block;
+}
+a:link, a:visited {
+	color:#316594;
+	text-decoration:underline;
+}
+a:hover, a:focus {
+	color:#222;
+	text-decoration:underline;
+}	
+
+
+/* HEADER */
+.header {
+	/*background: #316594;*/
+	background: #2A2A90; 
+	
+	/*background: #6B94B4;
+	background: -moz-linear-gradient(top, #6B94B4 0%, #316594 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6B94B4), color-stop(100%,#316594)); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6B94B4', endColorstr='#316594',GradientType=0 );
+	*/
+	height:115px;
+	whight:800px;
+	border-bottom:#2B5780 1px solid;
+	/*border-bottom:#316594 1px solid;*/
+}
+
+/* HEADER: breadcrumbs */
+header .breadcrumbs {
+	text-shadow: 1px 1px 0px rgba(255,255,255,.5);
+	border-top:#FFF 1px solid;
+	border-bottom:#ccc 1px solid;
+	font-size:11px;
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	color:#666;
+	text-transform:uppercase;
+	width:100%;
+	background: #eee;
+	background: -moz-linear-gradient(top, #EDEDED 0%, #D5D5D5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EDEDED), color-stop(100%,#D5D5D5));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EDEDED', endColorstr='#D5D5D5',GradientType=0 ); 
+}
+header .breadcrumbs a:link, 
+header .breadcrumbs a:visited {
+	color:#666;
+	text-decoration:underline;
+}
+header .breadcrumbs a:focus, 
+header .breadcrumbs a:hover {
+	color:#316594;
+	text-decoration:underline;
+}
+/*
+#index header .breadcrumbs {
+
+	display:none;*/ /* no reason to have breadcrumbs on homepage */
+/*
+} 
+*/
+
+/* HEADER: logo */
+header #logo {
+	position:absolute;
+	top:20px;
+	left:350px;
+	/*left:300px;
+	right:300px;*/
+	font-size:35px;
+	white-space:nowrap;
+	color:#fff;
+/*	font-family: 'Yanone Kaffeesatz', arial, helvetica, sans-serif;*/
+	font-family: arial, helvetica, sans-serif;
+/*	text-transform:uppercase;*/
+	text-shadow: 1px 1px 0px rgba(0,0,0, .4);
+}
+header #logo:link, 
+header #logo:visited, 
+header #logo:hover, 
+header #logo:focus {
+	text-decoration:none;
+}
+
+/* HEADER: navigation */
+header nav {
+	position:absolute;
+	top:80px;
+	left:300px;
+	/*right:250px;*/
+	text-shadow: 1px 1px 0px rgba(0,0,0, .3);
+}
+header nav ul {
+	/*clear: both;
+    margin: 0 300px;
+	right:100;
+	position:absolute;*/
+	list-style:none;	
+	float:left;
+}	
+header nav li {
+	display:block;
+	float:left;
+	margin:0 0 0 10px;
+}
+header nav li a {
+	display:block;
+	font-size:13px;
+	padding:5px 15px;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+header nav li a:link, 
+header nav li a:visited {
+	color:#eee;
+	text-decoration:none;
+}	
+header nav li a:hover, 
+header nav li a:focus {
+	color:#FFF;
+	text-decoration:none;
+}
+header nav li.current a {
+	color:#FFF;
+	background:#7096B6;
+	background:rgba(255,255,255,.2);
+	text-decoration:none;
+	border-radius:40px;
+	-moz-border-radius:40px;
+	-khtml-border-radius:40px;
+	-webkit-border-radius:40px;
+}
+
+#language-menu {
+	list-style:none;	
+	float:left;
+
+}
+
+/* BODY CONTENT */
+article {
+	float:left;
+	width:988px;
+	min-height:500px;
+	background:#fff;
+	border-bottom:1px solid #c8c8c8;
+	border-left:1px solid #e4e4e4;
+	border-right:1px solid #c8c8c8;
+	-moz-box-shadow: 2px 1px 10px rgba(0,0,0, .07);
+	-webkit-box-shadow: 2px 1px 10px rgba(0,0,0, .07);
+	box-shadow: 2px 1px 10px rgba(0,0,0, .07);
+}
+article h1 {
+	font-family: 'Yanone Kaffeesatz', arial, helvetica, sans-serif;
+	margin:0 0 45px 0;
+	color: #275176;
+	font-size:37px;
+}
+article h2 {
+	font-family: 'Yanone Kaffeesatz', arial, helvetica, sans-serif;
+	margin:0 0 10px 0;
+	color: #222222;
+	font-size:30px;
+}
+article h3 {
+	font-family: 'Yanone Kaffeesatz', arial, helvetica, sans-serif;
+	margin:0 0 15px 0;
+	color: #275176;
+	font-size:25px;
+}
+article h4 {
+	font-family: 'Yanone Kaffeesatz', arial, helvetica, sans-serif;
+	margin:0 0 10px 0;
+	color: #555;
+	font-size:20px;
+	font-weight:100;
+}
+article h5 {
+	font-family: arial, serif;
+	margin:0 0 10px 0;
+	color: #333;
+	font-size:15px;
+}
+article h6 {
+	font-family: arial, serif;
+	margin:0 0 10px 0;
+	color: #666;
+	font-size:14px;
+}
+article section {
+	padding:40px;
+	line-height:22px;
+	font-size:14px;
+	color:#333;	
+}
+article section p {margin:0 0 25px 0;}
+article section ul, 
+article section ol {
+	margin:0 0 25px 30px;
+}
+article section ul ul, 
+article section ol ol,
+article section ul ol, 
+article section ol ul {
+	margin:0 0 0 25px;
+}
+article section code {
+	border:1px solid #ccc;
+	background:#f6f6f6;
+	font-size:12px;
+	padding:1px;
+}
+article section pre {
+	border:1px solid #ccc;
+	background:#f6f6f6;
+	padding:15px;
+	margin:0 0 25px 0;
+	line-height:16px;
+	font-size:13px;
+	color:#555;
+	text-shadow: 1px 1px 0px #fff;
+	border-radius:0 4px 4px 0;
+	-moz-border-radius:0 4px 4px 0;
+	-khtml-border-radius:0 4px 4px 0;
+	-webkit-border-radius:0 4px 4px 0;
+}
+article section pre code {
+	border:none;
+	background:none;
+	padding:none;
+}
+article section blockquote {
+	margin:0 0 25px 20px;
+	color:#555;
+	line-height:20px;
+	font-family:georgia, garamond, serif;
+	font-style:italic;
+	padding:0 0 0 15px;
+	border-left:1px solid #ccc;
+}
+article section .footer {
+	color:#888;
+	font-size:11px;
+	margin-top:40px;
+	border-top:1px dotted #ccc;
+	padding-top:15px;
+}
+article section .footer p {
+	margin:0 0 10px 0;
+}
+
+
+/* SIDEBAR */
+aside {
+	float:right;
+	width:260px;
+	margin:40px 0 0 0;
+}
+aside .section {
+	padding:0 0 0 0px;	
+}
+aside .section {
+	margin:0 0 40px 0;
+	font-size:11px;
+	line-height:16px;
+	color:#555;
+	text-shadow: 1px 1px 0px #fff;
+}
+aside .section p {
+	margin:0 0 15px 0;
+}
+aside .section ul, 
+aside .section ol {
+	margin:0 0 15px 20px;
+}
+aside .section h2 {
+	background:#333;
+	border-top:1px solid rgba(255,255,255,.4);
+	text-shadow: 1px 1px 0px rgba(0,0,0,.5);
+	text-transform:uppercase;
+	background: -moz-linear-gradient(top, #444 0%, #222 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#444), color-stop(100%,#222));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', endColorstr='#222222',GradientType=0 ); 
+	font-family: 'Yanone Kaffeesatz', arial, helvetica, sans-serif;
+	font-weight:100;
+	color:#fff;
+	font-size:19px;
+	line-height:19px;
+	margin:0 0 20px -31px;
+	padding:5px 0 7px 25px;
+	border-radius:0 4px 4px 0;
+	-moz-border-radius:0 4px 4px 0;
+	-khtml-border-radius:0 4px 4px 0;
+	-webkit-border-radius:0 4px 4px 0;
+}
+
+/* SIDEBAR: socialmedia */
+aside #socialmedia {
+	position:relative;
+}
+aside #socialmedia h2 {
+	width:65px;
+	background: #316594;
+	background: -moz-linear-gradient(top, #316594 0%, #2C5983 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#316594), color-stop(100%,#2C5983));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#316594', endColorstr='#2C5983',GradientType=0 ); 
+}
+aside #socialmedia .icons {
+	position:absolute;
+	top:3px;
+	right:30px;	
+}
+
+
+/* FOOTER */
+footer {
+	padding:20px 0;
+	text-shadow: 1px 1px 0px rgba(255,255,255,.8);
+	color:#888;
+	font-size:11px;
+}
+footer .left {
+	float:left;
+	width:40%;
+	text-align:left;
+}
+footer .right {
+	float:right;
+	width:60%;
+	text-align:right;
+}
+footer a:link, footer a:visited {
+	color:#888;
+	text-decoration:underline;
+}
+footer a:hover, footer a:focus {
+	color:#555;
+	text-decoration:underline;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:100%;
+  font: inherit;
+  vertical-align:baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display:block;
+}
+
+blockquote, q { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+
+table { border-collapse:collapse; border-spacing:0; }
+
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+
+input, select { vertical-align:middle; }
+
+body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+
+select, input, textarea, button { font:99% sans-serif; }
+
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+body, select, input, textarea {
+  color: #444;
+}
+
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+
+html { overflow-y: scroll; }
+
+a:hover, a:active { outline: none; }
+
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+
+
+ul, ol { margin-left: 2em; }
+ol { list-style-type: decimal; }
+
+/* remove margins for navigation lists */
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+
+td { vertical-align: top; }
+
+/* set sub, sup without affecting line-height: gist.github.com/413930*/
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+pre {
+  white-space: pre; white-space: pre-wrap; white-space: pre-line; word-wrap: break-word;
+  padding: 15px;
+}
+
+textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+.ie6 legend, .ie7 legend { margin-left: -7px; } /* thnx ivannikolic! */
+
+/* align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* hand cursor on clickable input elements */
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+
+/* webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea { margin: 0; }
+
+/* colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid {
+      border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px red;
+ -webkit-box-shadow: 0px 0px 5px red;
+         box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+/* These selection declarations have to be separate.
+   No text-shadow: twitter.com/miketaylr/status/12228805301
+   Also: hot pink. */
+::-moz-selection{ background: #333; color:#fff; text-shadow: none; }
+::selection { background:#333; color:#fff; text-shadow: none; }
+
+/*  j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: #FF5E99; }
+
+/* make buttons play nice in IE:
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+
+/* bicubic resizing for non-native sized IMG:
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+
+ /* Primary Styles
+    Author:
+ */
+
+ /*
+  * Non-semantic helper classes: please define your styles before this section.
+  */
+
+ /* for image replacement */
+ .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+
+ /* Hide for both screenreaders and browsers
+    css-discuss.incutio.com/wiki/Screenreader_Visibility */
+ .hidden { display: none; visibility: hidden; }
+
+ /* Hide only visually, but have it available for screenreaders: by Jon Neal
+   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+ .visuallyhidden {
+     border: 0;
+     clip: rect(0 0 0 0);
+     height: 1px;
+     margin: -1px;
+     overflow: hidden;
+     padding: 0;
+     position: absolute;
+     width: 1px;
+ }
+
+ /* Hide visually and from screenreaders, but maintain layout */
+ .invisible { visibility: hidden; }
+
+ /* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+ .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; visibility: hidden; }
+ .clearfix:after { clear: both; }
+ /* fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+ .clearfix { zoom: 1; }
+</style>
+	<header class="EWcontainer">
+		<div class="header">
+			<!-- <div class="wrapper">
+				
+				logo/sitename -->
+				
+				<!-- Angel change -->
+				<!--
+<a href="http://i-proc.com/www/" id="logo" >Intellectual Processors</a>
+-->
+<strong><img alt="" src="http://i-proc.com/www/data/uploads/image/logo1.png" style="width:100px; height: 115px;"></strong>
+					<a href="http://i-proc.com/www/" id="logo">		ООО Интеллектуальные процессоры </a>
+				<!-- Angel change -->
+				
+				<!-- main navigation -->
+				<nav id="main-nav">
+					<ul>
+					 	<li class="index current"><a href="http://i-proc.com/www/" title="Главная">Главная</a></li>
+<li class="projects"><a href="http://i-proc.com/www/index.php?id=projects" title="Проекты">Проекты</a></li>
+<li class="proposal"><a href="http://i-proc.com/www/index.php?id=proposal" title="Предложения">Предложения</a></li>
+<li class="publications"><a href="http://i-proc.com/www/index.php?id=publications" title="Публикации">Публикации</a></li>
+<li class="cooperation"><a href="http://i-proc.com/www/index.php?id=cooperation" title="Сотрудничество">Сотрудничество</a></li>
+<li class="about"><a href="http://i-proc.com/www/index.php?id=about" title="О компании">О компании</a></li>
+<li class="contacts"><a href="http://i-proc.com/www/index.php?id=contacts" title="Контакты">Контакты</a></li>
+					</ul>
+				</nav>
+			</div>
+		
+		
+		<!-- breadcrumbs: only show when NOT on homepage -->
+		 <p class="breadcrumbs">
+			<span class="wrapper">				
+				<a href="http://i-proc.com/www/">Home</a> &nbsp;&nbsp;•  <b>Главная</b>
+				<span style="float: right;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<a href="http://i-proc.com/www/?setlang=&amp;setlang=ru" style="float: right; text-decoration: none;">ru</a>
+				<span style="float: right;">&nbsp;•&nbsp;</span>
+				<a href="http://i-proc.com/www/?setlang=ru&amp;setlang=en" style="float: right; text-decoration: none;">en</a>
+	
+			</span>
+		
+		
+  </p></header>	<div class="wrapper clearfix">
+		<!-- page content -->
+		<article>
+        <section class="EWcontainer">
+        
+		<!-- include the sidebar template -->
+		<div id="ЗаголовокКомпонент" draggable="false" class=""><h3>И так далее</h3></div><div id="текст" draggable="false" class=""><p>И длинная статья, его описывающая. С интересными словами и содержательным текстом</p></div><div id="ЗаголовокКомпонент" draggable="false" class=""><h3>Некое событие</h3></div></section></article></div>			<!-- title and content -->
+				<div class="footer">
+					<p>Published on <time datetime="2014-09-03" pubdate="">September 3rd, 2014</time></p>
+				</div>
+			
+			
+		
+
+		<!-- include the sidebar template -->
+		

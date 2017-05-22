@@ -30,10 +30,10 @@ export default class Cabinet extends Component {
                         <NewTemplateForm/>
                     </div>
                     <div className="col-sm-6 col-md-4">
-                        <NewSiteForm/>
+                        <NewComponentForm/>
                     </div>
                     <div className="col-sm-6 col-md-4">
-                        <NewComponentForm/>
+                        <NewSiteForm/>
                     </div>
                 </div>
             </div>

@@ -71,6 +71,7 @@ export default class SiteList extends Component {
         })
 
         return <div className="col-md-4 thumbnail">
+        <h2>Сайты</h2>
             {sites}
         </div>
         }

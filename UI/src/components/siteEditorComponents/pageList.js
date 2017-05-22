@@ -72,6 +72,7 @@ export default class PageList extends Component {
         })
 
         return <div className="col-md-4 thumbnail">
+        <h2>Страницы</h2>
             {pages}
         </div>
         }

@@ -56,10 +56,9 @@ export default class NewPageForm extends Component {
 					'Content-Type': 'application/json'
 				}
             })
-        .then(result => result.body.getReader().read())
-		.then(res => new TextDecoder().decode(res.value))
+        .then(result => result.text())
         .then(pageName => {
-            localStorage.setItem("pageName", pageName);
+            localStorage.setItem("pageName", this.state.pageName);
             localStorage.setItem("templateName", this.state.tempName);
             window.location.replace('pageEditor.html');
         });

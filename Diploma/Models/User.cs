@@ -75,13 +75,11 @@ namespace Diploma.Models
         {
             var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + templateName + ".html";
             if (!File.Exists(filepath)) return "";
-            else
+            using (var inputStream = new FileStream(filepath, FileMode.Open))
             {
-                var inputStream = new FileStream(filepath, FileMode.Open);
                 templateText.CopyTo(inputStream);
-                inputStream.Dispose();
-                return templateName;
             }
+            return templateName;
         }
         public string[] getTemplates()
         {
@@ -169,6 +167,41 @@ namespace Diploma.Models
                 .ToArray();
         }
 
+        public FileStream getImage(string sitename, string imageName)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + sitename + "/images/" + imageName;
+            if (File.Exists(filepath))
+            {
+                return File.Open(filepath, FileMode.Open);
+            }
+            else throw new Exception("no such file");
+        }
+        public string[] getImages(string siteName)
+        {
+            var filepaths = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName + "/images";
+            return Directory.GetFiles(filepaths)
+                .Select(Path.GetFileName)
+                .ToArray();
+        }
+        public string deleteImage(string siteName, string imageName)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName + "/images/" + imageName;
+            if (!File.Exists(filepath)) return "";
+            else
+            {
+                File.Delete(filepath);
+                return "Deleted";
+            }
+        }
+        public void uploadImage(string siteName, IFormFile uploadedFile)
+        {
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName + "/images/" + uploadedFile.FileName;
+            var inputStream = new FileStream(filepath, FileMode.OpenOrCreate);
+            uploadedFile.CopyTo(inputStream);
+            inputStream.Dispose();
+            return;
+        }
+
         public string addPage(string siteName, string pageName)
         {
             var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName + "/" + pageName + ".html";
@@ -197,14 +230,16 @@ namespace Diploma.Models
             else throw new Exception("no such file");
 
         }
-        public string writeSitePage(string siteName, string pageText)
+        public string writeSitePage(string siteName, string pagename, Stream pageText)
         {
-            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/templates/" + siteName + ".html";
+            var filepath = Directory.GetCurrentDirectory() + "/usersFiles/" + Id + "/sites/" + siteName + "/" + pagename + ".html";
             if (!File.Exists(filepath)) return "";
             else
             {
-                File.WriteAllText(filepath, pageText);
-                return pageText;
+                var inputStream = new FileStream(filepath, FileMode.Open);
+                pageText.CopyTo(inputStream);
+                inputStream.Dispose();
+                return pagename;
             }
         }
         public string deleteSitePage(string siteName, string pageName)

@@ -13,8 +13,7 @@ export default class ComponentEditor extends Component {
 					'Content-Type': 'application/json'
 				}
             })
-            .then(result => result.body.getReader().read())
-            .then(res => new TextDecoder().decode(res.value))
+            .then(result => result.text())
             .then(componentText => {
                 this.updateCode(componentText);
             });

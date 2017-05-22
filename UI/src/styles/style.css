@@ -1771,4 +1771,8 @@ a > img.fh5co-align-center {
   margin-right: auto;
 }
 
+.CodeMirror {
+    height: 98vh !important
+}
+
 /*# sourceMappingURL=style.css.map */

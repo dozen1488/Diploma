@@ -26,8 +26,7 @@ export default class NewTemplateForm extends Component {
 					'Content-Type': 'application/json'
 				}
             })
-        .then(result => result.body.getReader().read())
-		.then(res => new TextDecoder().decode(res.value))
+        .then(result => result.text())
         .then(templateName => {
             localStorage.setItem("templateName", templateName);
             window.location.replace('templateEditor.html');

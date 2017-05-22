@@ -27,8 +27,7 @@ namespace Diploma.Controllers
             User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             return user.getSites();
         }
-
-        [HttpPost]
+        
         [Authorize]
         [HttpPost("{siteName}")]
         public IActionResult POST(string siteName)
@@ -62,6 +61,63 @@ namespace Diploma.Controllers
         }
 
 
+        [Authorize]
+        [HttpGet("{siteName}/images/{imageName}")]
+        public IActionResult getImage(string siteName, string imageName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            try
+            {
+                var stream = user.getImage(siteName, imageName);
+                return File(stream, "application/octet-stream");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [Authorize]
+        [HttpDelete("{siteName}/images/{imageName}")]
+        public IActionResult deleteImage(string siteName, string imageName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            try
+            {
+                var stream = user.deleteImage(siteName, imageName);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [Authorize]
+        [HttpPost("{siteName}/images")]
+        public IActionResult uploadImage(IFormFile uploadedFile, string siteName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            try
+            {
+                user.uploadImage(siteName, uploadedFile);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [Authorize]
+        [HttpGet("{siteName}/images")]
+        public IEnumerable<string> getImages(string siteName)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            return user.getImages(siteName);
+        }
+
+
         [HttpGet("{siteName}")]
         [Authorize]
         public IEnumerable<string> GetSitePages(string siteName)
@@ -77,16 +133,15 @@ namespace Diploma.Controllers
             User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             try
             {
-                user.getSitePage(siteName, pageName);
-                return Ok();
+                var stream = user.getSitePage(siteName, pageName);
+                return File(stream, "application/octet-stream");
             }
             catch (Exception ex)
             {
                 return BadRequest();
             }
         }
-
-        [HttpPost]
+        
         [Authorize]
         [HttpPost("{siteName}/{pageName}")]
         public IActionResult addPage(string siteName, string pageName)
@@ -103,18 +158,21 @@ namespace Diploma.Controllers
             }
         }
 
-        [HttpPut("{siteName}")]
+        [HttpPut("{siteName}/{pageName}")]
         [Authorize]
-        public IActionResult putPage(string siteName, [FromBody]string pageText)
+        public IActionResult putPage(string siteName, string pageName)
         {
             if (siteName == "") return BadRequest();
             else
             {
                 User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
-                if (user.writeSitePage(siteName, pageText) != "")
+                try {
+                    user.writeSitePage(siteName, pageName, this.Request.Body);
                     return Ok();
-                else
+                }
+                catch (Exception ex) {
                     return BadRequest();
+                }
             }
         }
         

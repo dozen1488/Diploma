@@ -26,8 +26,7 @@ export default class NewSiteForm extends Component {
 					'Content-Type': 'application/json'
 				}
             })
-        .then(result => result.body.getReader().read())
-		.then(res => new TextDecoder().decode(res.value))
+        .then(result => result.text())
         .then(siteName => {
             localStorage.setItem("siteName", this.state.siteName);
             window.location.replace('siteEditor.html');

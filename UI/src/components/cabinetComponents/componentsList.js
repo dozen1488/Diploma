@@ -71,6 +71,7 @@ export default class ComponentList extends Component {
         })
 
         return <div className="col-md-4 thumbnail">
+        <h2>Компоненты</h2>
             {components}
         </div>
         }

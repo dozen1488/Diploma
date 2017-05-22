@@ -26,8 +26,7 @@ export default class NewComponentForm extends Component {
 					'Content-Type': 'application/json'
 				}
             })
-        .then(result => result.body.getReader().read())
-		.then(res => new TextDecoder().decode(res.value))
+        .then(result => result.text())
         .then(componentName => {
             localStorage.setItem("componentName", componentName);
             window.location.replace('componentEditor.html');

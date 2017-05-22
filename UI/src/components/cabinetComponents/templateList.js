@@ -77,6 +77,7 @@ export default class TemplateList extends Component {
         })
 
         return <div className="col-md-4 thumbnail">
+        <h2>Шаблоны</h2>
             {templates}
         </div>
         }

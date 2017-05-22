@@ -1,0 +1,12 @@
+<input type="text" size="40">
+<button onclick="
+(
+	function el(event){
+		console.dir(event);
+		var text = event.srcElement.parentElement.childNodes[0].value;
+		console.dir(text);
+		event.srcElement.parentElement.innerHTML = '<p>' + text + '</p>';
+	}
+)
+(event)
+">закончить редактирование</button>

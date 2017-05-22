@@ -1,0 +1,14 @@
+<div style="width: 50%; float: right;" class="EWcontainer"> Контейнер 1<div id="ЗаголовокКомпонент" draggable="false" class=""><div class="EWcontainer">Контейнер</div></div><div id="текст" draggable="false" class=""><p>Третий пробный текст</p></div><div id="ЗаголовокКомпонент" draggable="false" class=""><div class="EWcontainer">йфыва</div></div><div id="ЗаголовокКомпонент" draggable="false" class=""><input type="text" size="40">
+<button onclick="
+(
+	function el(event){
+		console.dir(event);
+		var text = event.srcElement.parentElement.childNodes[0].value;
+		console.dir(text);
+		event.srcElement.parentElement.innerHTML = '<div class=\" ewcontainer\"="">' + text + '';
+	}
+)
+(event)
+"&gt;закончить редактирование</button></div><div id="текст" draggable="false" class=""><p>Пробный текст</p></div></div>
+<div style="width: 50%; float: left;" class="EWcontainer">Контейнер 2<div id="текст" draggable="false" class=""><p>Ещё один пробный текст</p></div></div>
+<div> Контейнер 3</div>
