@@ -1,16 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Sortable from 'sortablejs';
 
-const bodyCode = `
-    (
-        function el(event){
-            console.dir(event);
-            event.srcElement.parentElement.innerText = event.srcElement.parentElement.childNodes[1].value;
-        }
-    )
-    (event)
-`
-
 class PageEditor extends Component {
     constructor(props) {
         super(props);
@@ -121,7 +111,7 @@ class PageEditor extends Component {
         {
             group: {
                 name: "components",
-                put: [],
+                put: ["shared"],
                 pull: "clone",
                 revertClone: true
             },
@@ -130,6 +120,7 @@ class PageEditor extends Component {
                 console.log(event);
                 if(event.item.parentNode.id == "from") return;
                 event.item.innerHTML = self.onEndStrategy.call(self, event.item.id);
+                event.item.id = null;
             }
         });
         var eWcontainers = Array.prototype.slice.call(document.getElementsByClassName('EWcontainer'));
@@ -141,7 +132,11 @@ class PageEditor extends Component {
                     put: [ "components", "shared" ],
                     pull: true
                 },
-                sort: true
+                sort: true,
+                onEnd: (event) => {
+                    console.log(event);
+                    if(event.item.parentNode.id == "from") event.item.remove();
+                }
             });
         });
     }

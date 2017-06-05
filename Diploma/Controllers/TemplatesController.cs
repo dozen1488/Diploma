@@ -23,7 +23,7 @@ namespace Diploma.Controllers
         [Authorize]
         public IEnumerable<string> Get()
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             return user.getTemplates();
         }
 
@@ -35,7 +35,7 @@ namespace Diploma.Controllers
             if (templateName == "") return BadRequest();
             try
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 var stream = user.getTemplate(templateName);
                 return File(stream, "application/octet-stream"); // FileStreamResult
             } catch (Exception ex)
@@ -52,7 +52,7 @@ namespace Diploma.Controllers
             if (templateName == "") return "Error";
             else
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 return user.createTemplate(templateName);
             }
         }
@@ -65,7 +65,7 @@ namespace Diploma.Controllers
             if (templateName == "") return Ok();
             else
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 try
                 {
                     user.writeTemplate(templateName, this.Request.Body);
@@ -86,7 +86,7 @@ namespace Diploma.Controllers
             if (templateName == "") return Ok();
             else
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 if (user.deleteTemplate(templateName) != "")
                     return Ok();
                 else

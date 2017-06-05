@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -24,7 +25,7 @@ namespace Diploma.Controllers
         [Authorize]
         public IEnumerable<string> Get()
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             return user.getSites();
         }
         
@@ -32,7 +33,7 @@ namespace Diploma.Controllers
         [HttpPost("{siteName}")]
         public IActionResult POST(string siteName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 user.createSite(siteName);
@@ -48,7 +49,7 @@ namespace Diploma.Controllers
         [Authorize]
         public IActionResult DELETE(string siteName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 user.deleteSite(siteName);
@@ -65,7 +66,7 @@ namespace Diploma.Controllers
         [HttpGet("{siteName}/images/{imageName}")]
         public IActionResult getImage(string siteName, string imageName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 var stream = user.getImage(siteName, imageName);
@@ -81,7 +82,7 @@ namespace Diploma.Controllers
         [HttpDelete("{siteName}/images/{imageName}")]
         public IActionResult deleteImage(string siteName, string imageName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 var stream = user.deleteImage(siteName, imageName);
@@ -97,7 +98,7 @@ namespace Diploma.Controllers
         [HttpPost("{siteName}/images")]
         public IActionResult uploadImage(IFormFile uploadedFile, string siteName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 user.uploadImage(siteName, uploadedFile);
@@ -113,7 +114,7 @@ namespace Diploma.Controllers
         [HttpGet("{siteName}/images")]
         public IEnumerable<string> getImages(string siteName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             return user.getImages(siteName);
         }
 
@@ -122,7 +123,7 @@ namespace Diploma.Controllers
         [Authorize]
         public IEnumerable<string> GetSitePages(string siteName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             return user.getSitePages(siteName);
         }
         
@@ -130,7 +131,7 @@ namespace Diploma.Controllers
         [HttpGet("{siteName}/{pageName}")]
         public IActionResult getPage(string siteName, string pageName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 var stream = user.getSitePage(siteName, pageName);
@@ -146,7 +147,7 @@ namespace Diploma.Controllers
         [HttpPost("{siteName}/{pageName}")]
         public IActionResult addPage(string siteName, string pageName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 user.addPage(siteName, pageName);
@@ -165,7 +166,7 @@ namespace Diploma.Controllers
             if (siteName == "") return BadRequest();
             else
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+                User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 try {
                     user.writeSitePage(siteName, pageName, this.Request.Body);
                     return Ok();
@@ -180,7 +181,7 @@ namespace Diploma.Controllers
         [HttpDelete("{siteName}/{pageName}")]
         public IActionResult deletePage(string siteName, string pageName)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+            User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             try
             {
                 user.deleteSitePage(siteName, pageName);

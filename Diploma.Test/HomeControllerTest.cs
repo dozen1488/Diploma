@@ -13,7 +13,59 @@ namespace Diploma.Test
         [Fact]
         public void IndexTest()
         {
-            Assert.Equal(2, 1);
+            HomeController controller = new HomeController();
+
+            // Act
+            LocalRedirectResult result = controller.Index() as LocalRedirectResult;
+
+            // Assert
+            Assert.True(result.Url == "/App/index.html");
+
+        }
+    }
+    public class HomeControllerTest
+    {
+        [Fact]
+        public void IndexTest()
+        {
+            HomeController controller = new HomeController();
+
+            // Act
+            LocalRedirectResult result = controller.Index() as LocalRedirectResult;
+
+            // Assert
+            Assert.True(result.Url == "/App/index.html");
+
+        }
+    }
+    public class HomeControllerTest
+    {
+        [Fact]
+        public void IndexTest()
+        {
+            HomeController controller = new HomeController();
+
+            // Act
+            LocalRedirectResult result = controller.Index() as LocalRedirectResult;
+
+            // Assert
+            Assert.True(result.Url == "/App/index.html");
+
+        }
+    }
+    public class HomeControllerTest
+    {
+        [Fact]
+        public void IndexTest()
+        {
+            HomeController controller = new HomeController();
+
+            // Act
+            LocalRedirectResult result = controller.Index() as LocalRedirectResult;
+
+            // Assert
+            Assert.True(result.Url == "/App/index.html");
+
         }
     }
 }

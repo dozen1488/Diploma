@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0cd12aabc65a865b877e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3cf8a6cded5f150cef8e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33395,8 +33395,6 @@ var _sortablejs2 = _interopRequireDefault(_sortablejs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var bodyCode = '\n    (\n        function el(event){\n            console.dir(event);\n            event.srcElement.parentElement.innerText = event.srcElement.parentElement.childNodes[1].value;\n        }\n    )\n    (event)\n';
-
 var PageEditor = function (_Component) {
     (0, _inherits3.default)(PageEditor, _Component);
 
@@ -33519,7 +33517,7 @@ var PageEditor = function (_Component) {
             var sortable = _sortablejs2.default.create(el, {
                 group: {
                     name: "components",
-                    put: [],
+                    put: ["shared"],
                     pull: "clone",
                     revertClone: true
                 },
@@ -33528,6 +33526,7 @@ var PageEditor = function (_Component) {
                     console.log(event);
                     if (event.item.parentNode.id == "from") return;
                     event.item.innerHTML = self.onEndStrategy.call(self, event.item.id);
+                    event.item.id = null;
                 }
             });
             var eWcontainers = Array.prototype.slice.call(document.getElementsByClassName('EWcontainer'));
@@ -33538,7 +33537,11 @@ var PageEditor = function (_Component) {
                         put: ["components", "shared"],
                         pull: true
                     },
-                    sort: true
+                    sort: true,
+                    onEnd: function onEnd(event) {
+                        console.log(event);
+                        if (event.item.parentNode.id == "from") event.item.remove();
+                    }
                 });
             });
         }
