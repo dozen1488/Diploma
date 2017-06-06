@@ -27,6 +27,7 @@ namespace Diploma.Controllers
         [Authorize]
         public IEnumerable<string> Get()
         {
+            //User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
             return user.getComponents();
         }
@@ -39,6 +40,7 @@ namespace Diploma.Controllers
             if (componentName == "") return BadRequest();
             try
             {
+                //User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
                 User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 var stream = user.getComponent(componentName);
                 return File(stream, "application/octet-stream"); // FileStreamResult
@@ -57,6 +59,7 @@ namespace Diploma.Controllers
             if (componentName == "") return "Error";
             else
             {
+                //User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
                 User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 return user.createComponent(componentName);
             }
@@ -70,6 +73,7 @@ namespace Diploma.Controllers
             if (componentName == "") return Ok();
             else
             {
+                //User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
                 User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 try
                 {
@@ -92,6 +96,7 @@ namespace Diploma.Controllers
             if (componentName == "") return Ok();
             else
             {
+                //User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
                 User user = new User{Id = 7, Email = "new@u", Password = "new@u"};
                 if (user.deleteComponent(componentName) != "")
                     return Ok();

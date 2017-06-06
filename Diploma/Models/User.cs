@@ -13,7 +13,7 @@ namespace Diploma.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public bool createUserFolder ()
+        public bool createUserFolder()
         {
             try
             {
@@ -27,8 +27,8 @@ namespace Diploma.Models
             {
                 return false;
             }
-        } 
-        public bool deleteUserFolder ()
+        }
+        public bool deleteUserFolder()
         {
             try
             {
@@ -272,7 +272,6 @@ namespace Diploma.Models
         }
 
     }
-
     public class LoginModel
     {
         public string Email { get; set; }
